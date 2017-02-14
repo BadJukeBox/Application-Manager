@@ -1,0 +1,17 @@
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\bin\Debug\App_Manager.exe.config
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\bin\Debug\App_Manager.exe
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\bin\Debug\App_Manager.pdb
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.csprojResolveAssemblyReference.cache
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App.g.cs
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager_MarkupCompile.cache
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager_MarkupCompile.lref
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.g.resources
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.Properties.Resources.resources
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.csproj.GenerateResource.Cache
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.exe
+c:\users\justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\App_Manager.pdb
+C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\bin\Debug\MainWindow.xaml.cs
+C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\MainWindow.g.cs
+C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\MainWindow.baml
+C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\InputForm.g.cs
+C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\InputForm.baml
