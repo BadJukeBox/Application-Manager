@@ -15,5 +15,3 @@ C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\ob
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\MainWindow.baml
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\InputForm.g.cs
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\InputForm.baml
-C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\GroupListScreen.g.cs
-C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\GroupListScreen.baml

@@ -5,15 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App_Manager"
         mc:Ignorable="d"
-        Title="Application Manager" Height="350" Width="525">
-    <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="18" Margin="0,0,0,0" VerticalAlignment="Top" Width="52" Foreground="Black">
-        <MenuItem Header="File" Width="39" Click="MenuItem_Click">
-            <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
-                <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" Click="NewGroup_Click"/>
-            </MenuItem>
-            <MenuItem Header="Open" HorizontalAlignment="Left" Width="140">
-                <MenuItem Header="Group" HorizontalAlignment="Left" Width="140"/>
-            </MenuItem>
-        </MenuItem>
-    </Menu>
+        Title="Input_Form" Height="350" Width="525">
+    <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="229,136,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+
 </Window>

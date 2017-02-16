@@ -37,7 +37,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -56,10 +55,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="GroupListScreen.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="InputForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -74,9 +69,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Form_Handler.cs" />
-    <Compile Include="GroupListScreen.xaml.cs">
-      <DependentUpon>GroupListScreen.xaml</DependentUpon>
-    </Compile>
     <Compile Include="InputForm.xaml.cs">
       <DependentUpon>InputForm.xaml</DependentUpon>
     </Compile>
