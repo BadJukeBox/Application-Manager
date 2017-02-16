@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 
 namespace App_Manager
 {
@@ -25,9 +25,10 @@ namespace App_Manager
         {
             InitializeComponent();
         }
-        private void button_Click(object sender, RoutedEventArgs e)
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            new InputForm().Show();            
+
         }
     }
 }

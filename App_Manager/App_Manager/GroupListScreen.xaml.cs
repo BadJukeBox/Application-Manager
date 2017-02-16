@@ -10,25 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Forms;
+using System.Windows.Shapes;
 
 namespace App_Manager
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for GroupListScreen.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class GroupListScreen : Window
     {
-        
-        public MainWindow()
+        public GroupListScreen()
         {
             InitializeComponent();
-        }
-
-        private void NewGroup_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
