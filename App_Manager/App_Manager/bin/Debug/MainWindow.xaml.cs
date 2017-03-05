@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows;
 using Microsoft.Win32;
 using System.Windows.Navigation;
+using System.Data.SQLite;
 
 
 namespace App_Manager
@@ -12,10 +13,16 @@ namespace App_Manager
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+        SQLiteManager SQLMan;
         public MainWindow()
         {
             InitializeComponent();
+            SQLMan = new SQLiteManager();
+            SQLMan.Init();
+            SQLMan.CreateTable("Big4");
+            SQLMan.OpenTable("Big4");
+            SQLMan.insertFromForm("Amazon", "SDET", "3/2/2017", "N/A", "N/A");
+            SQLMan.deleteTable("Big4");
         }
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)

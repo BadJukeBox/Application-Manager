@@ -36,3 +36,5 @@ C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.g.resources
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.Properties.Resources.resources
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.csproj.GenerateResource.Cache
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\System.Data.SQLite.dll
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\System.Data.SQLite.xml
