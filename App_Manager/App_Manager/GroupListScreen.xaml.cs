@@ -23,5 +23,6 @@ namespace App_Manager
         {
             InitializeComponent();
         }
+
     }
 }

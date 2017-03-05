@@ -17,3 +17,22 @@ C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\ob
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\InputForm.baml
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\GroupListScreen.g.cs
 C:\Users\Justin\documents\visual studio 2015\Projects\App_Manager\App_Manager\obj\Debug\GroupListScreen.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\App_Manager.exe.config
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.exe
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.pdb
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.csprojResolveAssemblyReference.cache
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\GroupListScreen.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\InputForm.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\MainWindow.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager_MarkupCompile.cache
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager_MarkupCompile.lref
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\MainWindow.xaml.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\App_Manager.exe
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\App_Manager.pdb
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\GroupListScreen.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\InputForm.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\MainWindow.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.g.resources
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.Properties.Resources.resources
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.csproj.GenerateResource.Cache

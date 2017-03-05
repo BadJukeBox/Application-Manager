@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="GroupListScreen" Height="350" Width="525">
     <Grid>
-        
+        <Frame x:Name="groupListScreenFrame"/>
+        <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="18" Margin="0,0,0,0" VerticalAlignment="Top" Width="52" Foreground="Black">
+            <MenuItem Header="File" Width="39">
+                <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
+                    <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" />
+                </MenuItem>
+                <MenuItem Header="Open" HorizontalAlignment="Left" Width="140">
+                    <MenuItem Header="Group" HorizontalAlignment="Left" Width="140"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
     </Grid>
 </Window>

@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
+using Microsoft.Win32;
 using System.Windows.Navigation;
-using System.Windows.Forms;
+using System.Data.SQLite;
+
 
 namespace App_Manager
 {
@@ -29,6 +22,26 @@ namespace App_Manager
         private void NewGroup_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void toGrpScreen_Click(object sender, RoutedEventArgs e)
+        {
+            GroupListScreen GLS = new GroupListScreen();
+            GLS.Show();
+        }
+
+        private void toForm_Click(object sender, RoutedEventArgs e)
+        {
+            InputForm InForm = new InputForm();
+            InForm.Show();
+        }
+
+        private void GroupOpen_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv|All files (*.*)|*.*";
+            if (openFileDialog.ShowDialog() == true) { }
+               // txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
         }
     }
 }
