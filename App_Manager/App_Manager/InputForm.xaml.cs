@@ -19,10 +19,10 @@ namespace App_Manager
     /// </summary>
     public partial class InputForm : Window
     {
-        Form_Handler form;
-        public InputForm()
+        SQLiteManager SQLMan;
+        public InputForm(SQLiteManager SQLman)
         {
-            form = new Form_Handler(this);
+            this.SQLMan = SQLman;
             InitializeComponent();
         }
 
@@ -49,7 +49,8 @@ namespace App_Manager
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            form.saveForm();
+            SQLMan.insertFromForm(Company_Name, Position_Name, Date_Text, Req_ID_Text, Additional_Text);
+            this.Close();
         }
     }
 }

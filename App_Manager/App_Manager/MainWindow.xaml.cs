@@ -21,8 +21,6 @@ namespace App_Manager
             SQLMan.Init();
             SQLMan.CreateTable("Big4");
             SQLMan.OpenTable("Big4");
-            SQLMan.insertFromForm("Amazon", "SDET", "3/2/2017", "N/A", "N/A");
-            SQLMan.deleteTable("Big4");
         }
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)
@@ -38,7 +36,7 @@ namespace App_Manager
 
         private void toForm_Click(object sender, RoutedEventArgs e)
         {
-            InputForm InForm = new InputForm();
+            InputForm InForm = new InputForm(SQLMan);
             InForm.Show();
         }
 

@@ -77,7 +77,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Form_Handler.cs" />
     <Compile Include="GroupListScreen.xaml.cs">
       <DependentUpon>GroupListScreen.xaml</DependentUpon>
     </Compile>
