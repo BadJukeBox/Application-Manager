@@ -5,7 +5,6 @@ using Microsoft.Win32;
 using System.Windows.Navigation;
 using System.Data.SQLite;
 
-
 namespace App_Manager
 {
     /// <summary>
@@ -27,6 +26,9 @@ namespace App_Manager
         private void NewGroup_Click(object sender, RoutedEventArgs e)
         {
 
+            //SQLMan.CreateTable();
+            GroupListScreen GLS = new GroupListScreen(SQLMan);
+            GLS.Show();
         }
 
         private void toGrpScreen_Click(object sender, RoutedEventArgs e)
@@ -48,5 +50,7 @@ namespace App_Manager
             if (openFileDialog.ShowDialog() == true) { }
                // txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
         }
+        
     }
+    
 }

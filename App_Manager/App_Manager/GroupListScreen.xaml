@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="GroupListScreen" Height="500" Width="750">
     <Grid>
-        <Frame x:Name="groupListScreenFrame"/>
         <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="18" Margin="0,0,0,0" VerticalAlignment="Top" Width="52" Foreground="Black">
             <MenuItem Header="File" Width="39">
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
@@ -18,5 +17,8 @@
                 </MenuItem>
             </MenuItem>
         </Menu>
+        <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="200" Margin="70,30,0,0" VerticalAlignment="Top" Width="200"/>
+        <StackPanel x:Name="stackPanel2" HorizontalAlignment="Left" Height="200" Margin="270,30,0,0" VerticalAlignment="Top" Width="200"/>
+        <StackPanel x:Name="stackPanel3" HorizontalAlignment="Left" Height="200" Margin="470,30,0,0" VerticalAlignment="Top" Width="200"/>
     </Grid>
 </Window>

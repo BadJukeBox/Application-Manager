@@ -1,16 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace App_Manager
 {
@@ -22,17 +13,45 @@ namespace App_Manager
         SQLiteManager SQLMan;
         public GroupListScreen(SQLiteManager SQLman)
         {
+            InitializeComponent();
             SQLMan = SQLman;
             GenerateList();
-            InitializeComponent();
         }
 
         private void GenerateList()
         {
+            bool add1, add2, add3;
+            add1 = true;
+            add2 = add3 = false;
             List<QueryData> listGenerate = SQLMan.getData();
-            foreach(QueryData n in listGenerate)
+            stackPanel1.Height = stackPanel2.Height = stackPanel3.Height = listGenerate.Count * 200;
+            Button newBtn;
+            foreach (QueryData n in listGenerate)
             {
-                Console.WriteLine(n.company);
+                newBtn = new Button();
+                newBtn.Content = n.company + "\n" + n.position + "\n" + n.reqid;
+                newBtn.Name = "Button";
+                newBtn.Height = 50;
+                newBtn.Width = 200;
+                if (add1)
+                {
+                    stackPanel1.Children.Add(newBtn);
+                    add1 = false;
+                    add2 = true;
+                }
+                else if (add2)
+                {
+                    stackPanel2.Children.Add(newBtn);
+                    add2 = false;
+                    add3 = true;
+                }
+                else if (add3)
+                {
+                    stackPanel3.Children.Add(newBtn);
+                    add3 = false;
+                    add1 = true;
+                }
+
             }
         }
 
