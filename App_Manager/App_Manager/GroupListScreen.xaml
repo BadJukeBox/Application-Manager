@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:App_Manager"
         mc:Ignorable="d"
-        Title="GroupListScreen" Height="350" Width="525">
+        Title="GroupListScreen" Height="500" Width="750">
     <Grid>
         <Frame x:Name="groupListScreenFrame"/>
         <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="18" Margin="0,0,0,0" VerticalAlignment="Top" Width="52" Foreground="Black">

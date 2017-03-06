@@ -14,9 +14,10 @@ namespace App_Manager
         SQLiteCommand command;
         String currentTable = "";
         String tableFormat = "create table if not exists newTable (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
-        String insertFormat = "insert into tableName (company, position, date, reqid, other) values ('cmptoreplace', 'postoreplace', 'datetoreplace', 'reqidtoreplace', 'othertoreplace')";
+        String insertFormat;
         String removeFormat = "delete from tableName where";
         String dropFormat = "drop table tableName;";
+        String ListTable;
 
 
         /* Attempts to open connection to general database. If one doesn't exist, creates a new one. */
@@ -51,15 +52,37 @@ namespace App_Manager
             Console.WriteLine("Open Success Successful.");
         }
 
+        public List<QueryData> getData()
+        {
+            List<QueryData> data = new List<QueryData>();
+            QueryData entry;
+            ListTable = "select * from " + currentTable + ";";
+            command = new SQLiteCommand(ListTable, sqlite_conn);
+            SQLiteDataReader sqRead = command.ExecuteReader();
+            try
+            {
+                while (sqRead.Read())
+                {
+                    entry = new QueryData();
+                    entry.company = sqRead.GetString(0);
+                    entry.position = sqRead.GetString(1);
+                    entry.date = sqRead.GetString(2);
+                    entry.reqid = sqRead.GetString(3);
+                    entry.other = sqRead.GetString(4);
+                    data.Add(entry);
+                }
+            }
+            finally
+            {
+                sqRead.Close();
+            }
+            return data;
+        }
+
         /* Inserts a new item into the Table, doesn't check for duplicates. */
         public void insertFromForm(String comp, String pos, String date, String reqid, String other)
         {
-            insertFormat = insertFormat.Replace("tableName", currentTable);
-            insertFormat = insertFormat.Replace("cmptoreplace", comp);
-            insertFormat = insertFormat.Replace("postoreplace", pos);
-            insertFormat = insertFormat.Replace("datetoreplace", date);
-            insertFormat = insertFormat.Replace("reqidtoreplace", reqid);
-            insertFormat = insertFormat.Replace("othertoreplace", other);
+            insertFormat = "insert into " + currentTable + " (company, position, date, reqid, other) values ('" + comp +"', '" + pos + "', '" + date + "', '" + reqid + "', '" + other + "')";
             command = new SQLiteCommand(insertFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Insert Successful.");
@@ -87,5 +110,13 @@ namespace App_Manager
         }
 
 
+    }
+     public class QueryData
+    {
+        public String company;
+        public String position;
+        public String date;
+        public String reqid;
+        public String other;
     }
 }

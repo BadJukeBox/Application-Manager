@@ -19,9 +19,21 @@ namespace App_Manager
     /// </summary>
     public partial class GroupListScreen : Window
     {
-        public GroupListScreen()
+        SQLiteManager SQLMan;
+        public GroupListScreen(SQLiteManager SQLman)
         {
+            SQLMan = SQLman;
+            GenerateList();
             InitializeComponent();
+        }
+
+        private void GenerateList()
+        {
+            List<QueryData> listGenerate = SQLMan.getData();
+            foreach(QueryData n in listGenerate)
+            {
+                Console.WriteLine(n.company);
+            }
         }
 
     }

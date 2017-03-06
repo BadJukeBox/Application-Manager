@@ -21,6 +21,7 @@ namespace App_Manager
             SQLMan.Init();
             SQLMan.CreateTable("Big4");
             SQLMan.OpenTable("Big4");
+            
         }
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)
@@ -30,7 +31,7 @@ namespace App_Manager
 
         private void toGrpScreen_Click(object sender, RoutedEventArgs e)
         {
-            GroupListScreen GLS = new GroupListScreen();
+            GroupListScreen GLS = new GroupListScreen(SQLMan);
             GLS.Show();
         }
 
