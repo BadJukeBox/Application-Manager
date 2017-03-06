@@ -15,11 +15,19 @@ namespace App_Manager
         {
             InitializeComponent();
             SQLMan = SQLman;
-            GenerateList();
+            GenerateList(false);
         }
 
-        private void GenerateList()
+        
+
+        private void GenerateList(bool newList)
         {
+            if (newList)
+            {
+                stackPanel1.Children.Clear();
+                stackPanel2.Children.Clear();
+                stackPanel3.Children.Clear();
+            }
             bool add1, add2, add3;
             add1 = true;
             add2 = add3 = false;
@@ -55,5 +63,16 @@ namespace App_Manager
             }
         }
 
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            InputForm InForm = new InputForm(SQLMan);
+            InForm.Show();
+            InForm.Closed += Form_Closed;
+        }
+        void Form_Closed(object sender, EventArgs e)
+        {
+
+            GenerateList(true);
+        }
     }
 }

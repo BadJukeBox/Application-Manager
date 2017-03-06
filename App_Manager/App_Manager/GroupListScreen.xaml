@@ -20,5 +20,6 @@
         <StackPanel x:Name="stackPanel1" HorizontalAlignment="Left" Height="200" Margin="70,30,0,0" VerticalAlignment="Top" Width="200"/>
         <StackPanel x:Name="stackPanel2" HorizontalAlignment="Left" Height="200" Margin="270,30,0,0" VerticalAlignment="Top" Width="200"/>
         <StackPanel x:Name="stackPanel3" HorizontalAlignment="Left" Height="200" Margin="470,30,0,0" VerticalAlignment="Top" Width="200"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="101,272,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
     </Grid>
 </Window>
