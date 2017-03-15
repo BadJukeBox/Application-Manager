@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace App_Manager
 {
@@ -28,6 +29,7 @@ namespace App_Manager
                 SQLMan.deleteFromTable(names[0], names[1], names[2], names[3], names[4]);
             }
             GenerateList(true);
+            butList.Clear();
         }
 
         private void GenerateList(bool newList)
@@ -92,7 +94,7 @@ namespace App_Manager
             InForm.Closed += Form_Closed;
         }
 
-        void Form_Closed(object sender, EventArgs e)
+        private void Form_Closed(object sender, EventArgs e)
         {
             GenerateList(true);
             Console.WriteLine("generated list");
@@ -105,7 +107,17 @@ namespace App_Manager
 
         private void posButton_Click(object sender, RoutedEventArgs e)
         {
-            toBeDeleted.Add(sender as Button);
+            Button btn = sender as Button;
+            if (toBeDeleted.Contains(btn))
+            {
+                toBeDeleted.Remove(btn);
+                btn.Background = Brushes.White;
+            }
+            else
+            {
+                toBeDeleted.Add(btn);
+                btn.Background = Brushes.LightBlue;
+            } 
         }
     }
 }
