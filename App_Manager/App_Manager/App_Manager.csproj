@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MenuBar.cs" />
     <Compile Include="SQLiteManager.cs" />
     <Page Include="GroupListScreen.xaml">
       <SubType>Designer</SubType>

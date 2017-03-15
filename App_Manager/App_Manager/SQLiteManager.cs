@@ -12,11 +12,11 @@ namespace App_Manager
     {
         SQLiteConnection sqlite_conn;
         SQLiteCommand command;
-        String currentTable = "";
-        String tableFormat = "create table if not exists newTable (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
+        String currentTable;
+        String tableFormat;
         String insertFormat;
-        String removeFormat = "delete from tableName where";
-        String dropFormat = "drop table tableName;";
+        String removeFormat;
+        String dropFormat;
         String ListTable;
 
 
@@ -39,7 +39,7 @@ namespace App_Manager
         //Should probably add functionality to check if one exists already
         public void CreateTable(String name)
         {
-                tableFormat = tableFormat.Replace("newTable", name);
+                tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
                 command = new SQLiteCommand(tableFormat, sqlite_conn);
                 command.ExecuteNonQuery();
                 Console.WriteLine("Connected Successfully.");
@@ -89,15 +89,30 @@ namespace App_Manager
         }
 
         /* Deletes item from table. */
-        public void deleteFromTable()
+        public void deleteFromTable(String comp, String pos, String date, String reqid, String other)
         {
+            removeFormat = "delete from " + currentTable + " where company='" + comp + "' and position='" + pos + "' and date= '" + date + "' and reqid='" + reqid + "';";
+            command = new SQLiteCommand(removeFormat, sqlite_conn);
+            command.ExecuteNonQuery();
+            Console.WriteLine("Delete Successful.");
+        }
 
+        /* "Clears" table, (since we dont have truncate we have to drop and recreate) */
+        public void clearTable()
+        {
+            dropFormat = "drop table " + currentTable + ";";
+            command = new SQLiteCommand(dropFormat, sqlite_conn);
+            command.ExecuteNonQuery();
+            tableFormat = "create table if not exists " + currentTable + " (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
+            command = new SQLiteCommand(tableFormat, sqlite_conn);
+            command.ExecuteNonQuery();
+            Console.WriteLine("Clear Successful.");
         }
 
         /* Drops table. Need to make sure that the user wants to perform this action before they do. */
         public void deleteTable(String nameToDelete)
         {
-            dropFormat = dropFormat.Replace("tableName", nameToDelete);
+            dropFormat = "drop table " + currentTable + ";";
             command = new SQLiteCommand(dropFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Drop Successful.");
