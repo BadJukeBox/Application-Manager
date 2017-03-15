@@ -19,6 +19,7 @@ namespace App_Manager
             SQLMan = SQLman;
             GenerateList(false);
         }
+
         private void deleteSelected(List<Button> butList)
         {
             foreach(Button n in butList)
@@ -31,6 +32,7 @@ namespace App_Manager
 
         private void GenerateList(bool newList)
         {
+            /* Clear panels so that we can regerate the list. */
             if (newList)
             {
                 stackPanel1.Children.Clear();
@@ -40,6 +42,7 @@ namespace App_Manager
             bool add1, add2, add3;
             add1 = true;
             add2 = add3 = false;
+
             List<QueryData> listGenerate = SQLMan.getData();
             stackPanel1.Height = stackPanel2.Height = stackPanel3.Height = listGenerate.Count * 200;
             Button newBtn;
@@ -47,14 +50,17 @@ namespace App_Manager
             foreach (QueryData n in listGenerate)
             {
                 newBtn = new Button();
-                newBtn.Content = n.company + "\n" + n.position + "\n" + n.reqid;
+                newBtn.Content = n.company + "\n" + n.position + "\n" + n.reqid; // show first 3 fields are button content.
                 newBtn.Name = "Button";
                 newBtn.Height = 50;
                 newBtn.Width = 195;
+                /* Store all fields for each button without showing. */
                 newBtn.Tag = n.company + "," + n.position + "," + n.date + "," + n.reqid + "," + n.other;
                 newBtn.Click += posButton_Click;
                 space = newBtn.Margin;
                 space.Bottom = 5;
+
+                /* Add to whichever stack panel is ready to take an item to generate a 3 by x list. */
                 if (add1)
                 {
                     stackPanel1.Children.Add(newBtn);
@@ -96,6 +102,7 @@ namespace App_Manager
         {
             deleteSelected(toBeDeleted);
         }
+
         private void posButton_Click(object sender, RoutedEventArgs e)
         {
             toBeDeleted.Add(sender as Button);
