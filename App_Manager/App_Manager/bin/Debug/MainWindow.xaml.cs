@@ -13,10 +13,12 @@ namespace App_Manager
     public partial class MainWindow : Window
     {
         SQLiteManager SQLMan;
+        MenuBar mBar;
         public MainWindow()
         {
             InitializeComponent();
             SQLMan = new SQLiteManager();
+            mBar = new MenuBar(SQLMan);
             SQLMan.Init();
             SQLMan.CreateTable("Big4");
             SQLMan.OpenTable("Big4");
@@ -25,7 +27,6 @@ namespace App_Manager
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)
         {
-
             //SQLMan.CreateTable();
             GroupListScreen GLS = new GroupListScreen(SQLMan);
             GLS.Show();
@@ -45,10 +46,7 @@ namespace App_Manager
 
         private void GroupOpen_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "CSV Files (*.csv)|*.csv|All files (*.*)|*.*";
-            if (openFileDialog.ShowDialog() == true) { }
-               // txtEditor.Text = File.ReadAllText(openFileDialog.FileName);
+           
         }
         
     }

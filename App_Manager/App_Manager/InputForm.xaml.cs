@@ -47,7 +47,7 @@ namespace App_Manager
             get { return Addition_Info.Text; }
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private void save_Click(object sender, RoutedEventArgs e)
         {
             SQLMan.insertFromForm(Company_Name, Position_Name, Date_Text, Req_ID_Text, Additional_Text);
             this.Close();

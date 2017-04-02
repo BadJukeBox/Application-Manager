@@ -8,7 +8,7 @@
         Title="GroupListScreen" Height="500" Width="750">
     <Grid>
         <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" Width="50" Foreground="Black">
-            <MenuItem Header="File" Width="40">
+            <MenuItem Header="Groups" Width="50">
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
                     <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" />
                 </MenuItem>

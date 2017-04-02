@@ -60,6 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MenuBar.cs" />
+    <Compile Include="PositionForm.xaml.cs">
+      <DependentUpon>PositionForm.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SQLiteManager.cs" />
     <Page Include="GroupListScreen.xaml">
       <SubType>Designer</SubType>
@@ -89,6 +92,10 @@
       <SubType>Code</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Page Include="PositionForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -13,6 +13,7 @@ namespace App_Manager
     {
         SQLiteManager SQLMan;
         List<Button> toBeDeleted = new List<Button>();
+        List<Button> itemList = new List<Button>();
 
         public GroupListScreen(SQLiteManager SQLman)
         {
@@ -25,15 +26,19 @@ namespace App_Manager
         {
             foreach(Button n in butList)
             {
+                itemList.Remove(n);
                 String[] names = n.Tag.ToString().Split(',');
                 SQLMan.deleteFromTable(names[0], names[1], names[2], names[3], names[4]);
             }
             GenerateList(true);
             butList.Clear();
+            foreach (Button n in itemList)
+                Console.WriteLine(n.Tag);
         }
 
         private void GenerateList(bool newList)
         {
+            int colWidth = 200;
             /* Clear panels so that we can regerate the list. */
             if (newList)
             {
@@ -41,50 +46,48 @@ namespace App_Manager
                 stackPanel2.Children.Clear();
                 stackPanel3.Children.Clear();
             }
-            bool add1, add2, add3;
-            add1 = true;
-            add2 = add3 = false;
-
+            /* QueryData class found in SQLiteManager.cs */
             List<QueryData> listGenerate = SQLMan.getData();
-            stackPanel1.Height = stackPanel2.Height = stackPanel3.Height = listGenerate.Count * 200;
+            stackPanel1.Height = stackPanel2.Height = stackPanel3.Height = listGenerate.Count * colWidth;
             Button newBtn;
-            Thickness space;
-            foreach (QueryData n in listGenerate)
+            //foreach (QueryData n in listGenerate)
+            for(int i = 0; i < listGenerate.Count; i++)
             {
-                newBtn = new Button();
-                newBtn.Content = n.company + "\n" + n.position + "\n" + n.reqid; // show first 3 fields are button content.
-                newBtn.Name = "Button";
-                newBtn.Height = 50;
-                newBtn.Width = 195;
-                /* Store all fields for each button without showing. */
-                newBtn.Tag = n.company + "," + n.position + "," + n.date + "," + n.reqid + "," + n.other;
-                newBtn.Click += posButton_Click;
-                space = newBtn.Margin;
-                space.Bottom = 5;
-
-                /* Add to whichever stack panel is ready to take an item to generate a 3 by x list. */
-                if (add1)
-                {
-                    stackPanel1.Children.Add(newBtn);
-                    newBtn.Margin = space;
-                    add1 = false;
-                    add2 = true;
-                }
-                else if (add2)
-                {
-                    stackPanel2.Children.Add(newBtn);
-                    newBtn.Margin = space;
-                    add2 = false;
-                    add3 = true;
-                }
-                else if (add3)
-                {
-                    stackPanel3.Children.Add(newBtn);
-                    newBtn.Margin = space;
-                    add3 = false;
-                    add1 = true;
-                }
+               newBtn = generateButton(listGenerate[i].company, listGenerate[i].position, listGenerate[i].date, listGenerate[i].reqid, listGenerate[i].other);
+               itemList.Add(newBtn);
+               if (i % 3 == 0)
+                   stackPanel1.Children.Add(newBtn);
+               else if (i % 3 == 1)
+                   stackPanel2.Children.Add(newBtn);
+               else if (i % 3 == 2)
+                   stackPanel3.Children.Add(newBtn);
             }
+        }
+
+        private Button generateButton(String company, String position, String date, String reqid, String other)
+        {
+            int btnHeight = 50;
+            int btnWidth = 195;
+            int btnMargin = 5;
+            Thickness space;
+            Button newBtn = new Button();
+            newBtn.Content = company + "\n" + position + "\n" + reqid; // show first 3 fields are button content.
+            newBtn.Name = "Button";
+            newBtn.Height = btnHeight;
+            newBtn.Width = btnWidth;
+            /* Store all fields for each button without showing. */
+            newBtn.Tag = company + "," + position + "," + date + "," + reqid + "," + other;
+            newBtn.Click += posButton_Click;
+            newBtn.MouseDoubleClick += showPosition;
+            space = newBtn.Margin;
+            space.Bottom = btnMargin;
+            newBtn.Margin = space;
+            return newBtn;
+        }
+
+        private void SortList(List<Button> items)
+        {
+
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)
@@ -119,5 +122,17 @@ namespace App_Manager
                 btn.Background = Brushes.LightBlue;
             } 
         }
+        
+        private void showPosition(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            String[] names = btn.Tag.ToString().Split(',');
+            PositionForm posForm = new PositionForm(names[0], names[1], names[2], names[3], names[4], SQLMan);
+            posForm.Show();
+            posForm.Closed += Form_Closed;
+            e.Handled = true;
+        }
+
+
     }
 }

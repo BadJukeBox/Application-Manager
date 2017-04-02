@@ -38,3 +38,5 @@ C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.csproj.GenerateResource.Cache
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\System.Data.SQLite.dll
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\System.Data.SQLite.xml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\PositionForm.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\PositionForm.baml

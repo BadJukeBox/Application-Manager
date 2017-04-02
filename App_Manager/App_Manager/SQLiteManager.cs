@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 
 namespace App_Manager
 {
+    public class QueryData
+    {
+        public String company;
+        public String position;
+        public String date;
+        public String reqid;
+        public String other;
+    }
+
     public class SQLiteManager
     {
         SQLiteConnection sqlite_conn;
-        SQLiteCommand command;
         String currentTable;
-        String tableFormat;
-        String insertFormat;
-        String removeFormat;
-        String dropFormat;
-        String ListTable;
-
 
         /* Attempts to open connection to general database. If one doesn't exist, creates a new one. */
         public void Init()
@@ -39,8 +38,8 @@ namespace App_Manager
         //Should probably add functionality to check if one exists already
         public void CreateTable(String name)
         {
-                tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
-                command = new SQLiteCommand(tableFormat, sqlite_conn);
+                String tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
+                SQLiteCommand command = new SQLiteCommand(tableFormat, sqlite_conn);
                 command.ExecuteNonQuery();
                 Console.WriteLine("Connected Successfully.");
         }
@@ -56,8 +55,8 @@ namespace App_Manager
         {
             List<QueryData> data = new List<QueryData>();
             QueryData entry;
-            ListTable = "select * from " + currentTable + ";";
-            command = new SQLiteCommand(ListTable, sqlite_conn);
+            String ListTable = "select * from " + currentTable + ";";
+            SQLiteCommand command = new SQLiteCommand(ListTable, sqlite_conn);
             SQLiteDataReader sqRead = command.ExecuteReader();
             try
             {
@@ -82,8 +81,8 @@ namespace App_Manager
         /* Inserts a new item into the Table, doesn't check for duplicates. */
         public void insertFromForm(String comp, String pos, String date, String reqid, String other)
         {
-            insertFormat = "insert into " + currentTable + " (company, position, date, reqid, other) values ('" + comp +"', '" + pos + "', '" + date + "', '" + reqid + "', '" + other + "')";
-            command = new SQLiteCommand(insertFormat, sqlite_conn);
+            String insertFormat = "insert into " + currentTable + " (company, position, date, reqid, other) values ('" + comp +"', '" + pos + "', '" + date + "', '" + reqid + "', '" + other + "')";
+            SQLiteCommand command = new SQLiteCommand(insertFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Insert Successful.");
         }
@@ -91,8 +90,8 @@ namespace App_Manager
         /* Deletes item from table. */
         public void deleteFromTable(String comp, String pos, String date, String reqid, String other)
         {
-            removeFormat = "delete from " + currentTable + " where company='" + comp + "' and position='" + pos + "' and date= '" + date + "' and reqid='" + reqid + "';";
-            command = new SQLiteCommand(removeFormat, sqlite_conn);
+            String removeFormat = "delete from " + currentTable + " where company='" + comp + "' and position='" + pos + "' and date= '" + date + "' and reqid='" + reqid + "';";
+            SQLiteCommand command = new SQLiteCommand(removeFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Delete Successful.");
         }
@@ -100,10 +99,10 @@ namespace App_Manager
         /* "Clears" table, (since we dont have truncate we have to drop and recreate) */
         public void clearTable()
         {
-            dropFormat = "drop table " + currentTable + ";";
-            command = new SQLiteCommand(dropFormat, sqlite_conn);
+            String dropFormat = "drop table " + currentTable + ";";
+            SQLiteCommand command = new SQLiteCommand(dropFormat, sqlite_conn);
             command.ExecuteNonQuery();
-            tableFormat = "create table if not exists " + currentTable + " (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
+            String tableFormat = "create table if not exists " + currentTable + " (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
             command = new SQLiteCommand(tableFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Clear Successful.");
@@ -112,8 +111,8 @@ namespace App_Manager
         /* Drops table. Need to make sure that the user wants to perform this action before they do. */
         public void deleteTable(String nameToDelete)
         {
-            dropFormat = "drop table " + currentTable + ";";
-            command = new SQLiteCommand(dropFormat, sqlite_conn);
+            String dropFormat = "drop table " + currentTable + ";";
+            SQLiteCommand command = new SQLiteCommand(dropFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Drop Successful.");
         }
@@ -126,12 +125,5 @@ namespace App_Manager
 
 
     }
-     public class QueryData
-    {
-        public String company;
-        public String position;
-        public String date;
-        public String reqid;
-        public String other;
-    }
+     
 }
