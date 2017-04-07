@@ -41,7 +41,7 @@ namespace App_Manager
                 String tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
                 SQLiteCommand command = new SQLiteCommand(tableFormat, sqlite_conn);
                 command.ExecuteNonQuery();
-                Console.WriteLine("Connected Successfully.");
+                Console.WriteLine("Table created Successfully.");
         }
 
         //Sets the table being worked with in the format Strings
@@ -108,10 +108,32 @@ namespace App_Manager
             Console.WriteLine("Clear Successful.");
         }
 
+        public List<String> listTables()
+        {
+            List<String> tableList = new List<String>();
+            String findTables = "select name from sqlite_master where type = 'table'";
+            SQLiteCommand command = new SQLiteCommand(findTables, sqlite_conn);
+            SQLiteDataReader sqRead = command.ExecuteReader();
+            try
+            {
+                while (sqRead.Read())
+                {
+                    String res = sqRead.GetString(0);
+                    tableList.Add(res);
+                }
+            }
+            finally
+            {
+                sqRead.Close();
+            }
+            Console.WriteLine("List created successfully");
+            return tableList;
+        }
+
         /* Drops table. Need to make sure that the user wants to perform this action before they do. */
         public void deleteTable(String nameToDelete)
         {
-            String dropFormat = "drop table " + currentTable + ";";
+            String dropFormat = "drop table " + nameToDelete + ";";
             SQLiteCommand command = new SQLiteCommand(dropFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Drop Successful.");

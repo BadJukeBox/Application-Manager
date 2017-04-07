@@ -60,6 +60,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="MenuBar.cs" />
+    <Compile Include="nameDialog.xaml.cs">
+      <DependentUpon>nameDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PositionForm.xaml.cs">
       <DependentUpon>PositionForm.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <SubType>Code</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Page Include="nameDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PositionForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

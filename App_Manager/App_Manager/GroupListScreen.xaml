@@ -12,8 +12,7 @@
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
                     <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" />
                 </MenuItem>
-                <MenuItem Header="Open" HorizontalAlignment="Left" Width="140">
-                    <MenuItem Header="Group" HorizontalAlignment="Left" Width="140"/>
+                <MenuItem Name="Groups"  Header="Open" HorizontalAlignment="Left" Width="140">
                 </MenuItem>
             </MenuItem>
         </Menu>

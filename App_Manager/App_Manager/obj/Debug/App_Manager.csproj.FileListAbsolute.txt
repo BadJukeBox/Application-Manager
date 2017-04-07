@@ -40,3 +40,5 @@ C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\System.Data.SQLite.xml
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\PositionForm.g.cs
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\PositionForm.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\nameDialog.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\nameDialog.baml

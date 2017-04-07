@@ -1,9 +1,5 @@
-﻿using System;
-using System.IO;
-using System.Windows;
-using Microsoft.Win32;
-using System.Windows.Navigation;
-using System.Data.SQLite;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace App_Manager
 {
@@ -13,28 +9,30 @@ namespace App_Manager
     public partial class MainWindow : Window
     {
         SQLiteManager SQLMan;
-        MenuBar mBar;
+        MenuBar menu;
         public MainWindow()
         {
             InitializeComponent();
             SQLMan = new SQLiteManager();
-            mBar = new MenuBar(SQLMan);
             SQLMan.Init();
-            SQLMan.CreateTable("Big4");
-            SQLMan.OpenTable("Big4");
-            
+            menu = new MenuBar(SQLMan, this);
+            menu.generateGroups(OpenMenu);
         }
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)
         {
-            //SQLMan.CreateTable();
-            GroupListScreen GLS = new GroupListScreen(SQLMan);
-            GLS.Show();
+            menu.createNewGroup();
+            menu.generateGroups(OpenMenu);
+        }
+
+        public void refreshList()
+        {
+            menu.generateGroups(OpenMenu);
         }
 
         private void toGrpScreen_Click(object sender, RoutedEventArgs e)
         {
-            GroupListScreen GLS = new GroupListScreen(SQLMan);
+            GroupListScreen GLS = new GroupListScreen(SQLMan, "Big4");
             GLS.Show();
         }
 

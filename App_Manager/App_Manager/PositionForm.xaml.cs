@@ -25,6 +25,12 @@ namespace App_Manager
         {
             InitializeComponent();
             SQLMan = SQLman;
+            /* FORMAT:
+             * original text = Current textbox text = given text;
+             * 
+             * The Textbox is populated by text given from parameters, which is then also fed to the first assignment
+             * so that the item can be deleted and replaced if necessary.
+             */
             comp = Company.Text = company;
             pos = Position.Text = position;
             dat = Date_of_App.Text = date;

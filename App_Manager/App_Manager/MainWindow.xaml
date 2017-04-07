@@ -13,8 +13,7 @@
                 <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
                     <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" Click="NewGroup_Click"/>
                 </MenuItem>
-                <MenuItem Header="Open" HorizontalAlignment="Left" Width="140">
-                    <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" Click="GroupOpen_Click"/>
+                <MenuItem Name="OpenMenu" Header="Open" HorizontalAlignment="Left" Width="140">
                 </MenuItem>
                 <MenuItem Header="Import" HorizontalAlignment="Left" Width="140" Click="GroupOpen_Click"/>
                 <MenuItem Header="Merge" HorizontalAlignment="Left" Width="140" Click="GroupOpen_Click"/>
