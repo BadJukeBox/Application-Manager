@@ -6,86 +6,126 @@ using System.Windows.Media;
 
 namespace App_Manager
 {
-    /// <summary>
-    /// Interaction logic for GroupListScreen.xaml
-    /// </summary>
     public partial class GroupListScreen : Window
     {
         SQLiteManager SQLMan;
         List<Button> toBeDeleted = new List<Button>();
         List<Button> itemList = new List<Button>();
         InputForm inForm;
+        MenuBar menu;
+
         PositionForm posForm;
+        int rowPos, colPos;
+        public static Boolean IsOpen { get; private set; }
 
         public GroupListScreen(SQLiteManager SQLman, String currentGroup)
         {
             InitializeComponent();
             SQLMan = SQLman;
             SQLMan.OpenTable(currentGroup);
-            GenerateList(true, true, itemList);
+            initGrid();
+            GenerateList();
+            menu = new MenuBar(SQLMan, this);
+            menu.generateGroups(CopyJobs);
+            menu.generateGroups(MoveJobs);
+            IsOpen = true;
+            this.Closed += new EventHandler(GLSwin_Close);
+        }
+
+        private void GLSwin_Close(object sender, EventArgs e)
+        {
+            IsOpen = false;
+        }
+
+        private void initGrid()
+        {
+            Console.WriteLine("init grid...");
+            genCols();
+            List<QueryData> listGenerate = SQLMan.getData();
+            genRows(listGenerate.Count);
+            rowPos = colPos = 1;
+
+        }
+
+        private void genCols()
+        {
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(70) });
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(195) });
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(195) });
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(195) });
+            mainGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(70) });
+        }
+
+        private void genRows(int numRows)
+        {
+            mainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
+            if ((numRows % 3) != 0) numRows += 1;
+            for (int i = 0; i < numRows; i++)
+                mainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
         }
 
         private void deleteSelected(List<Button> toBeDeletedList)
         {
             Console.WriteLine("Deleting...");
-            foreach(Button n in toBeDeletedList)
+            if (toBeDeletedList.Count == 0)
+            {
+                MessageBox.Show("Nothing selected to delete!");
+                return;
+            }
+            foreach (Button n in toBeDeletedList)
             {
                 itemList.Remove(n);
                 String[] names = n.Tag.ToString().Split(',');
                 SQLMan.deleteFromTable(names[0], names[1], names[2], names[3], names[4]);
+                mainGrid.Children.Remove(n);
             }
-            GenerateList(true, false, itemList);
+            GenerateList();
             toBeDeletedList.Clear();
         }
 
-        private void GenerateList(bool regenerateList, bool newList, List<Button> btnList)
+        private void GenerateList()
         {
-            int colWidth = 200;
-            /* Clear panels so that we can regerate the list. */
-            if (newList)
+            Console.WriteLine("Generating List...");
+            colPos = 1;
+            rowPos = 1;
+            if(itemList.Count != 0)
+                foreach (Button n in itemList)
+                    placeIteminGrid(n);
+            else
             {
-                List<QueryData> listGenerate = SQLMan.getData();
-                /* QueryData class found in SQLiteManager.cs */
-                btnList.Clear();
-                foreach (QueryData data in listGenerate)
-                    btnList.Add(generateButton(data.company, data.position, data.date, data.reqid, data.other));
-            }
-            if (regenerateList)
-            {
-                stackPanel1.Children.Clear();
-                stackPanel2.Children.Clear();
-                stackPanel3.Children.Clear();
-            }
-            stackPanel1.Height = stackPanel2.Height = stackPanel3.Height = btnList.Count * colWidth;
-            for(int i = 0; i < btnList.Count; i++)
-            {
-               if (i % 3 == 0)
-                   stackPanel1.Children.Add(btnList[i]);
-               else if (i % 3 == 1)
-                   stackPanel2.Children.Add(btnList[i]);
-               else if (i % 3 == 2)
-                   stackPanel3.Children.Add(btnList[i]);
+                List<QueryData> genList = SQLMan.getData();
+                foreach (QueryData n in genList)
+                    placeIteminGrid(generateButton(n.company, n.position, n.date, n.reqid, n.other));
             }
         }
 
+        private void placeIteminGrid(Button n)
+        {
+            mainGrid.Children.Remove(n);
+            Grid.SetColumn(n, colPos);
+            Grid.SetRow(n, rowPos);
+            mainGrid.Children.Add(n);
+            colPos++;
+            if (colPos > 3)
+            {
+                colPos = 1;
+                mainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
+                rowPos++;
+            }
+        }
+        
         private Button generateButton(String company, String position, String date, String reqid, String other)
         {
-            int btnHeight = 50;
-            int btnWidth = 195;
-            int btnMargin = 5;
-            Thickness space;
             Button newBtn = new Button();
+            Grid.SetColumn(newBtn, colPos);
+            Grid.SetRow(newBtn, rowPos);
             newBtn.Content = company + "\n" + position + "\n" + reqid; // show first 3 fields are button content.
             newBtn.Name = "Button";
-            newBtn.Height = btnHeight;
-            newBtn.Width = btnWidth;
+
             /* Store all fields for each button without showing. */
             newBtn.Tag = company + "," + position + "," + date + "," + reqid + "," + other;
             newBtn.Click += posButton_Click;
             newBtn.MouseDoubleClick += showPosition;
-            space = newBtn.Margin;
-            space.Bottom = btnMargin;
-            newBtn.Margin = space;
             return newBtn;
         }
 
@@ -98,27 +138,29 @@ namespace App_Manager
 
         private void Form_Closed(object sender, EventArgs e)
         {
-            if(inForm != null)
+            Button n;
+            if (inForm != null)
             {
-                itemList.Add(generateButton(inForm.Company.Text, 
-                    inForm.Position.Text, 
-                    inForm.Date_of_App.Text, 
-                    inForm.Requisition_ID.Text, 
-                    inForm.Addition_Info.Text));
+                n = generateButton(inForm.Company.Text,
+                    inForm.Position.Text,
+                    inForm.Date_of_App.Text,
+                    inForm.Requisition_ID.Text,
+                    inForm.Addition_Info.Text);
+                itemList.Add(n);
+                placeIteminGrid(n);
                 inForm = null;
             }
-            else if(posForm != null)
+            else if (posForm != null)
             {
-                itemList.Add(generateButton(posForm.Company.Text,
-                    posForm.Position.Text,
-                    posForm.Date_of_App.Text,
-                    posForm.Requisition_ID.Text,
-                    posForm.Addition_Info.Text));
+                n = generateButton(inForm.Company.Text,
+                    inForm.Position.Text,
+                    inForm.Date_of_App.Text,
+                    inForm.Requisition_ID.Text,
+                    inForm.Addition_Info.Text);
+                itemList.Add(n);
+                placeIteminGrid(n);
                 posForm = null;
-                
             }
-            //newList is true because posForm doesn't automatically remove the item from the list so It has to be "remade"
-            GenerateList(true, true, itemList);
         }
 
         private void delButton_Click(object sender, RoutedEventArgs e)
@@ -138,9 +180,9 @@ namespace App_Manager
             {
                 toBeDeleted.Add(btn);
                 btn.Background = Brushes.LightBlue;
-            } 
+            }
         }
-        
+
         private void showPosition(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -151,6 +193,43 @@ namespace App_Manager
             e.Handled = true;
         }
 
+        public void moveItems(String to)
+        {
+            if (toBeDeleted.Count == 0)
+            {
+                MessageBox.Show("Nothing selected to be moved!");
+                return;
+            }
+            foreach (Button n in toBeDeleted)
+            {
+                String[] names = n.Tag.ToString().Split(',');
+                SQLMan.deleteFromTable(names[0], names[1], names[2], names[3], names[4]);
+                mainGrid.Children.Remove(n);
+            }
+            GenerateList();
+            SQLMan.OpenTable(to);
+            foreach (Button n in toBeDeleted)
+            {
+                String[] names = n.Tag.ToString().Split(',');
+                SQLMan.insertFromForm(names[0], names[1], names[2], names[3], names[4]);
+            }
+            toBeDeleted.Clear();
+            GenerateList();
+        }
 
+        public void copyItems(String to)
+        {
+            if (toBeDeleted.Count == 0)
+            {
+                MessageBox.Show("Nothing selected to be copied!");
+                return;
+            }
+            foreach (Button n in toBeDeleted)
+            {
+                String[] names = n.Tag.ToString().Split(',');
+                SQLMan.OpenTable(to);
+                SQLMan.insertFromForm(names[0], names[1], names[2], names[3], names[4]);
+            }
+        }
     }
 }

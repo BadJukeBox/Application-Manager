@@ -59,7 +59,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GroupItemManagement.cs" />
     <Compile Include="MenuBar.cs" />
+    <Compile Include="mergeDialog.xaml.cs">
+      <DependentUpon>mergeDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="nameDialog.xaml.cs">
       <DependentUpon>nameDialog.xaml</DependentUpon>
     </Compile>
@@ -95,6 +99,10 @@
       <SubType>Code</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Page Include="mergeDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="nameDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

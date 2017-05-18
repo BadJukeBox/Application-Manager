@@ -7,6 +7,15 @@ namespace App_Manager
 {
     public class QueryData
     {
+        public QueryData() { }
+        public QueryData(string Company, string Position, string Date, string Reqid, string Other)
+        {
+            company = Company;
+            position = Position;
+            date = Date;
+            reqid = Reqid;
+            other = Other;
+        }
         public String company;
         public String position;
         public String date;
@@ -38,10 +47,11 @@ namespace App_Manager
         //Should probably add functionality to check if one exists already
         public void CreateTable(String name)
         {
-                String tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
-                SQLiteCommand command = new SQLiteCommand(tableFormat, sqlite_conn);
-                command.ExecuteNonQuery();
-                Console.WriteLine("Table created Successfully.");
+            String tableFormat = "create table if not exists "+ name +" (company varchar(20), position varchar(50), date varchar(10), reqid varchar(15), other varchar(150))";
+            SQLiteCommand command = new SQLiteCommand(tableFormat, sqlite_conn);
+            command.ExecuteNonQuery();
+            currentTable = name;
+            Console.WriteLine("Table created Successfully.");
         }
 
         //Sets the table being worked with in the format Strings
@@ -85,6 +95,33 @@ namespace App_Manager
             SQLiteCommand command = new SQLiteCommand(insertFormat, sqlite_conn);
             command.ExecuteNonQuery();
             Console.WriteLine("Insert Successful.");
+        }
+
+        public void moveItems(String from, String to)
+        {
+            String selectFrom = "select * from " + from;
+            SQLiteCommand command = new SQLiteCommand(selectFrom, sqlite_conn);
+            SQLiteDataReader sqRead = command.ExecuteReader();
+            try
+            {
+                while (sqRead.Read())
+                {
+                    String res1 = sqRead.GetString(0);
+                    String res2 = sqRead.GetString(1);
+                    String res3 = sqRead.GetString(2);
+                    String res4 = sqRead.GetString(3);
+                    String res5 = sqRead.GetString(4);
+                    String insert = "insert into " + to + " (company, position, date, reqid, other) values ('" + res1 + "', '" + res2 + "', '" + res3 + "', '" + res4 + "', '" + res5 + "')";
+                    SQLiteCommand ins = new SQLiteCommand(insert, sqlite_conn);
+                    ins.ExecuteNonQuery();
+                }
+            }
+            finally
+            {
+                sqRead.Close();
+            }
+            currentTable = to;
+            Console.WriteLine("Move Successful.");
         }
 
         /* Deletes item from table. */

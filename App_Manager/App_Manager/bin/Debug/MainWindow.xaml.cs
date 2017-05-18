@@ -17,36 +17,31 @@ namespace App_Manager
             SQLMan.Init();
             menu = new MenuBar(SQLMan, this);
             menu.generateGroups(OpenMenu);
+            menu.generateGroups(delMenu);
         }
 
         private void NewGroup_Click(object sender, RoutedEventArgs e)
         {
             menu.createNewGroup();
             menu.generateGroups(OpenMenu);
+            menu.generateGroups(delMenu);
         }
 
         public void refreshList()
         {
             menu.generateGroups(OpenMenu);
+            menu.generateGroups(delMenu);
         }
 
-        private void toGrpScreen_Click(object sender, RoutedEventArgs e)
+        private void Import_Click(object sender, RoutedEventArgs e)
         {
-            GroupListScreen GLS = new GroupListScreen(SQLMan, "Big4");
-            GLS.Show();
+            menu.ImportFileClick();
         }
 
-        private void toForm_Click(object sender, RoutedEventArgs e)
+        private void merge_Click(object sender, RoutedEventArgs e)
         {
-            InputForm InForm = new InputForm(SQLMan);
-            InForm.Show();
+            menu.MergeTables();
         }
-
-        private void GroupOpen_Click(object sender, RoutedEventArgs e)
-        {
-           
-        }
-        
     }
     
 }

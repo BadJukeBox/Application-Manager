@@ -10,16 +10,15 @@
         <Frame x:Name="mainWindowFrame"/>
         <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" Width="50" Foreground="Black">
             <MenuItem Header="Groups" Width="50">
-                <MenuItem Header="New" HorizontalAlignment="Left" Width="140">
-                    <MenuItem Header="Group" HorizontalAlignment="Left" Width="140" Click="NewGroup_Click"/>
+                <MenuItem Header="New Group" HorizontalAlignment="Left" Width="150" Click="NewGroup_Click">
                 </MenuItem>
                 <MenuItem Name="OpenMenu" Header="Open" HorizontalAlignment="Left" Width="140">
                 </MenuItem>
-                <MenuItem Header="Import" HorizontalAlignment="Left" Width="140" Click="GroupOpen_Click"/>
-                <MenuItem Header="Merge" HorizontalAlignment="Left" Width="140" Click="GroupOpen_Click"/>
+                <MenuItem Name="delMenu" Header="Delete" HorizontalAlignment="Left" Width="140">
+                </MenuItem>
+                <MenuItem Header="Import" HorizontalAlignment="Left" Width="140" Click="Import_Click"/>
+                <MenuItem Header="Merge" HorizontalAlignment="Left" Width="140" Click="merge_Click"/>
             </MenuItem>
         </Menu>
-        <Button x:Name="toForm" Content="Form" HorizontalAlignment="Left" Margin="343,166,0,0" VerticalAlignment="Top" Width="75" Click="toForm_Click"/>
-        <Button x:Name="toGrpScreen" Content="ToGrpScreen" HorizontalAlignment="Left" Margin="179,166,0,0" VerticalAlignment="Top" Width="75" Click="toGrpScreen_Click"/>
     </Grid>
 </Window>

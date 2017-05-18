@@ -42,3 +42,5 @@ C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\PositionForm.baml
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\nameDialog.g.cs
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\nameDialog.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\mergeDialog.g.cs
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\mergeDialog.baml
