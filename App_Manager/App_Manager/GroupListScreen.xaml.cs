@@ -59,7 +59,7 @@ namespace App_Manager
         private void genRows(int numRows)
         {
             mainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(30) });
-            if ((numRows % 3) != 0) numRows += 1;
+            if (((numRows % 3) != 0) || numRows == 0) numRows += 1;
             for (int i = 0; i < numRows; i++)
                 mainGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50) });
         }
