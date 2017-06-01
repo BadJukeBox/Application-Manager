@@ -13,7 +13,7 @@ namespace App_Manager
         List<Button> itemList = new List<Button>();
         InputForm inForm;
         MenuBar menu;
-
+        String currGrp;
         PositionForm posForm;
         int rowPos, colPos;
         public static Boolean IsOpen { get; private set; }
@@ -28,6 +28,8 @@ namespace App_Manager
             menu = new MenuBar(SQLMan, this);
             menu.generateGroups(CopyJobs);
             menu.generateGroups(MoveJobs);
+            this.Title = currentGroup;
+            currGrp = currentGroup;
             IsOpen = true;
             this.Closed += new EventHandler(GLSwin_Close);
         }
@@ -117,6 +119,7 @@ namespace App_Manager
         private Button generateButton(String company, String position, String date, String reqid, String other)
         {
             Button newBtn = new Button();
+            newBtn.Background = Brushes.LightBlue;
             Grid.SetColumn(newBtn, colPos);
             Grid.SetRow(newBtn, rowPos);
             newBtn.Content = company + "\n" + position + "\n" + reqid; // show first 3 fields are button content.
@@ -213,6 +216,7 @@ namespace App_Manager
                 String[] names = n.Tag.ToString().Split(',');
                 SQLMan.insertFromForm(names[0], names[1], names[2], names[3], names[4]);
             }
+            SQLMan.OpenTable(currGrp);
             toBeDeleted.Clear();
             GenerateList();
         }
@@ -224,10 +228,10 @@ namespace App_Manager
                 MessageBox.Show("Nothing selected to be copied!");
                 return;
             }
+            SQLMan.OpenTable(to);
             foreach (Button n in toBeDeleted)
             {
-                String[] names = n.Tag.ToString().Split(',');
-                SQLMan.OpenTable(to);
+                String[] names = n.Tag.ToString().Split(',');      
                 SQLMan.insertFromForm(names[0], names[1], names[2], names[3], names[4]);
             }
         }

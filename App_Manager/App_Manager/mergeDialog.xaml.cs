@@ -19,6 +19,7 @@ namespace App_Manager
     /// </summary>
     public partial class mergeDialog : Window
     {
+        public bool isSave = false;
         public mergeDialog()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace App_Manager
 
         public void save_Click(object sender, RoutedEventArgs e)
         {
+            isSave = true;
             this.Close();
         }
     }

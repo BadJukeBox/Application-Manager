@@ -7,7 +7,11 @@
         mc:Ignorable="d"
         Title="Application Manager" Height="500" Width="750">
     <Grid>
-        <Frame x:Name="mainWindowFrame"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="360*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
+        <Frame x:Name="mainWindowFrame" Grid.ColumnSpan="2"/>
         <Menu x:Name="FileMenu" HorizontalAlignment="Left" Height="20" Margin="0,0,0,0" VerticalAlignment="Top" Width="50" Foreground="Black">
             <MenuItem Header="Groups" Width="50">
                 <MenuItem Header="New Group" HorizontalAlignment="Left" Width="150" Click="NewGroup_Click">
@@ -20,5 +24,6 @@
                 <MenuItem Header="Merge" HorizontalAlignment="Left" Width="140" Click="merge_Click"/>
             </MenuItem>
         </Menu>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="50,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="338" Width="634" FontFamily="Segoe UI Semibold" FontSize="24"><Run Text="Application Manager Ver. 1.0"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="Current version notable tools:" TextDecorations="Underline"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Merge - Merge one group to another, deletes the first group."/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Import - Currently only works with CSV files."/><LineBreak/><Run FontWeight="Bold" FontSize="18" FontFamily="Segoe UI Semilight" Text="Planned features;" TextDecorations="Underline"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Multi-Window Support"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Import - Excel files"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Drag and drop files from one group to another"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    Sorting items by different attributes."/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="Known bugs:" TextDecorations="Underline"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="    None"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight"/><LineBreak/><Run FontSize="18" FontFamily="Segoe UI Semilight" Text="Please report any bugs/requests to sheluligans.justin@gmail.com!"/></TextBlock>
     </Grid>
 </Window>

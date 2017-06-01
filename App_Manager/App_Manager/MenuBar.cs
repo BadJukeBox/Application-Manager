@@ -150,6 +150,7 @@ namespace App_Manager
 
         private void ngForm_Closed(object sender, EventArgs e)
         {
+            if (!nD.isSave) return;
             String name = nD.ResponseBlock.Text;
             if (name == "")
             {
@@ -164,6 +165,7 @@ namespace App_Manager
 
         private void mgForm_Closed(object sender, EventArgs e)
         {
+            if (!mD.isSave) return;
             String mFrom = mD.MergeFrom.Text;
             String mTo = mD.MergeTo.Text;  
             try
