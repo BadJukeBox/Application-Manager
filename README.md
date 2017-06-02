@@ -1,5 +1,5 @@
 # Version 1.0
-zip file downloadable [with this link.](Application-Manager/App_Manager/App_Manager/bin/Debug/)
+zip file downloadable following the path Application-Manager/App_Manager/App_Manager/bin/Debug/ApplicationManager.zip
 Download the ApplicationManager.zip file and after extracting, run the .exe
 
 # Application-Manager
