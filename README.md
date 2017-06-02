@@ -1,3 +1,6 @@
+# Version 1.0
+zip file downloadable [with this link.](Application-Manager/App_Manager/App_Manager/bin/Debug/Application_Manager.zip)
+
 # Application-Manager
 Inventory for managing job applications
 
@@ -10,15 +13,19 @@ Inventory for managing job applications
   
   Double click to see/edit positions
   
-
-# Planned support:
-
-  Importing .csv and excel files
-  
-  Opening and editing multiple groups
-  
   Menu bar for ease of use
   
   Moving/Copying positions to other groups
+  
+  Importing .csv files
+  
+  Merging groups
+
+# Planned support:
+
+  Importing excel files
+  
+  Opening and editing multiple groups
+  
   
   
