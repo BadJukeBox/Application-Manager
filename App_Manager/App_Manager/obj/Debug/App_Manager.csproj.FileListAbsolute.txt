@@ -44,3 +44,7 @@ C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\nameDialog.baml
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\mergeDialog.g.cs
 C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\mergeDialog.baml
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\App_Manager.exe.manifest
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\bin\Debug\App_Manager.application
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.exe.manifest
+C:\Users\Justin\Documents\GitHub\Application-Manager\App_Manager\App_Manager\obj\Debug\App_Manager.application
