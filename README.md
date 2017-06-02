@@ -1,5 +1,5 @@
 # Version 1.0
-zip file downloadable [with this link.](Application-Manager/App_Manager/App_Manager/bin/Debug/Application_Manager.zip)
+zip file downloadable [with this link.](Application-Manager/App_Manager/App_Manager/bin/Debug/ApplicationManager.zip)
 
 # Application-Manager
 Inventory for managing job applications
